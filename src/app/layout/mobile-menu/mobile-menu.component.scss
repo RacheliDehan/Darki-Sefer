@@ -1,0 +1,16 @@
+.mobile-menu {
+  position: fixed;
+  inset: 0 0 0 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: flex-end;
+}
+.mobile-menu > ul {
+  background: #fff;
+  width: 280px;
+  padding: 1rem;
+  list-style: none;
+}
+.mobile-menu .close { background: none; border: none; font-size: 1.5rem; }
+
+@media (min-width: 768px) { .mobile-menu { display: none; } }

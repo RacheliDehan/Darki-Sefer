@@ -1,0 +1,8 @@
+<section class="checkout">
+  <h1>תשלום</h1>
+  <div *ngIf="store.orderSummary() as summary">
+    <div>פריטים: {{ summary.totals.totalBooks }}</div>
+    <div>סה"כ לתשלום: {{ summary.totals.totalAmount }}</div>
+    <button (click)="submit('card')">שלם בכרטיס</button>
+  </div>
+</section>

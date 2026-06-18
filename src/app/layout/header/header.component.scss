@@ -1,0 +1,194 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 60px;
+  background: #ffffff;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+  direction: rtl;
+  font-family: Arial, sans-serif;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 200px;
+  height: auto;
+  object-fit: contain;
+}
+
+.logo-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111;
+}
+
+.main-menu {
+  display: flex;
+  gap: 25px;
+}
+
+.main-menu a {
+  text-decoration: none;
+  color: #222;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.main-menu a:hover {
+  color: #b89b5e; /* זהב כמו בתמונה */
+}
+
+.header-left a {
+  margin-right: 15px;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.cart-btn {
+  border: 1px solid #ddd;
+  color: #333;
+}
+
+.login-btn {
+  background: #b89b5e;
+  color: white;
+}
+/* HERO */
+.hero {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  direction: rtl;
+  font-family: Arial, sans-serif;
+
+  /* תמונת רקע */
+  background: url("../../../assets/dSefer.jpeg") center/cover no-repeat;
+}
+
+/* שכבת כהות מעל התמונה */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.65)
+  );
+}
+
+/* תוכן */
+.hero-content {
+  position: relative;
+  max-width: 900px;
+  padding: 40px 30px;
+  color: #fff;
+
+  /* כרטיס שקוף */
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 18px;
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  animation: fadeUp 0.8s ease;
+}
+
+/* כותרת */
+.hero-content h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+  color: #f5e6c8; /* גוון זהב עדין */
+}
+
+/* פסקאות */
+.hero-content p {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 12px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* אנימציה עדינה */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.hero {
+  position: relative;
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  direction: rtl;
+  font-family: Arial, sans-serif;
+
+  background:url("../../../assets/dSefer.jpeg") center/cover no-repeat;
+}
+
+/* שכבת כהות חזקה יותר לקריאות */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.6);
+}
+
+/* תוכן מרכזי נקי */
+.hero-content {
+  position: relative;
+  max-width: 850px;
+  padding: 20px 30px;
+  color: #fff;
+  text-align: center;
+}
+
+/* כותרת חזקה */
+.hero-content h1 {
+  font-size: 52px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  letter-spacing: 1px;
+  color: #f2d6a2;
+}
+
+/* טקסט נקי ונעים */
+.hero-content p {
+  font-size: 17px;
+  line-height: 1.9;
+  margin-bottom: 10px;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* אפקט קטן לכניסה */
+.hero-content {
+  animation: fadeIn 0.7s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

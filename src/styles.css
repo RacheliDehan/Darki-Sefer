@@ -1,0 +1,43 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap'); */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+    font-family:  Sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  direction: rtl;
+  font-family: 'Assistant', sans-serif;
+  background: #f8f5f0;
+  color: #3a2b1f;
+}
+
+.contact-banner {
+  padding: 70px;
+  text-align: center;
+  background: #111;
+  color: white;
+}
+
+.contact-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: #b89b5e;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.contact-button:hover {
+  background: #9f834a;
+}

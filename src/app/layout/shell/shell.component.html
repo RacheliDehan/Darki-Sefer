@@ -1,0 +1,13 @@
+<div class="app-shell" dir="rtl">
+  <header>
+    <app-header (toggleMobile)="toggleMobile()"></app-header>
+  </header>
+
+  <app-mobile-menu *ngIf="mobileOpen()" (close)="toggleMobile()"></app-mobile-menu>
+
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+
+  <app-footer></app-footer>
+</div>

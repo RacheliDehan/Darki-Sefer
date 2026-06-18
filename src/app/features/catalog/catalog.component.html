@@ -1,0 +1,19 @@
+<section class="catalog">
+  <header class="catalog-header">
+    <input type="search" placeholder="חפש ספרים" (input)="onSearch($any($event.target).value)" />
+  </header>
+
+  <aside class="categories">
+    <button (click)="selectCategory(null)">הכל</button>
+    <button *ngFor="let c of store.categories()" (click)="selectCategory(c.id)">{{ c.name }}</button>
+  </aside>
+
+  <section class="list">
+    <ul>
+      <li *ngFor="let book of store.filteredBooks()">
+        <a [routerLink]="['/books', book.id]">{{ book.title }}</a>
+        <div class="meta">{{ book.author }}</div>
+      </li>
+    </ul>
+  </section>
+</section>

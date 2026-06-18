@@ -1,0 +1,10 @@
+<div class="mobile-menu" role="dialog" aria-label="תפריט נייד">
+  <button class="close" (click)="close.emit()">×</button>
+  <ul>
+    <li><a routerLink="/" (click)="close.emit()">בית</a></li>
+    <li><a routerLink="/catalog" (click)="close.emit()">קטלוג</a></li>
+    <li><a routerLink="/cart" (click)="close.emit()">עגלת קניות</a></li>
+    <li><a routerLink="/checkout" (click)="close.emit()">תשלום</a></li>
+    <li><a routerLink="/contact" (click)="close.emit()">צור קשר</a></li>
+  </ul>
+</div>
