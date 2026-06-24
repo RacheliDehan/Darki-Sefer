@@ -1,28 +1,66 @@
-
-
 <header class="header">
-    <div class="header-right">
-        
-         <a class="logo-title" routerLink="{{routes.HOME}}"><img src="/dSefer.jpeg" alt="דרכי הספר" class="logo"></a>
-    </div>
 
-     <nav class="main-menu">
-        <!-- <a href="#">אודות</a> -->
-        <!-- <a href="#">ספרי טבע</a> -->
-        <!-- <a href="#">ספרי הלכה</a> -->
-        <!-- <a href="#">ספרי מדע</a> -->
-        <!-- <a href="#">ספרים נוספים</a> -->
-            <a routerLink="{{routes.CATALOG}}">קטלוג</a>
-    <a routerLink="{{routes.CART}}">עגלת קניות</a>
-    <a routerLink="{{routes.CHECKOUT}}">תשלום</a>
-    <a routerLink="{{routes.CONTACT}}">צור קשר</a>
+  <div class="container">
+
+    <!-- Logo -->
+    <a class="logo-wrapper" [routerLink]="routes.HOME">
+
+      <img src="/dSefer.jpeg"
+           alt="דרכי הספר"
+           class="logo">
+
+      <div class="logo-text">
+        <span class="title">דרכי הספר</span>
+        <span class="subtitle">קטלוג ספרי לימוד</span>
+      </div>
+
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="main-menu">
+
+      <a [routerLink]="routes.HOME"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{exact:true}">
+        דף הבית
+      </a>
+
+      <a [routerLink]="routes.CATALOG"
+         routerLinkActive="active">
+        קטלוג
+      </a>
+
+      <a [routerLink]="routes.CART"
+         routerLinkActive="active">
+        עגלת קניות
+      </a>
+
+      <a [routerLink]="routes.CHECKOUT"
+         routerLinkActive="active">
+        תשלום
+      </a>
+
+      <a [routerLink]="routes.CONTACT"
+         routerLinkActive="active">
+        צור קשר
+      </a>
+
     </nav>
 
+    <!-- Actions -->
     <div class="header-left">
-        <a href="#" class="cart-btn"> סל</a>
-        <a href="#" class="login-btn">התחברות</a>
+
+      <a [routerLink]="routes.CART"
+         class="cart-btn">
+        🛒 סל
+      </a>
+
+      <button class="login-btn">
+        התחברות
+      </button>
+
     </div>
-</header> 
 
+  </div>
 
-
+</header>

@@ -1,33 +1,68 @@
-<!-- FOOTER -->
 <footer class="footer">
-    <div class="footer-content">
 
-        <div class="footer-about">
-            <h3>דרכי הספר</h3>
-            <p>
-                הבית לספרים איכותיים, מקצועיים וחינוכיים.
-            </p>
+    <div class="footer-card">
+
+        <div class="footer-logo">
+
+            <img src="/dSefer.jpeg"
+                 alt="דרכי הספר">
+
+            <h2>דרכי הספר</h2>
+
+            <span>קטלוג ספרי לימוד</span>
+
+        </div>
+
+        <p class="footer-description">
+            דרכי הספר מספקת פתרון מלא להזמנת ספרי לימוד
+            עבור גנים, בתי ספר ומוסדות חינוך ברחבי הארץ.
+        </p>
+
+        <div class="contact-list">
+
+            <div class="contact-item">
+                <span class="icon">📍</span>
+                <span>ירושלים, ישראל</span>
+            </div>
+
+            <div class="contact-item">
+                <span class="icon">☎</span>
+                <span>08-6352111</span>
+            </div>
+
+            <div class="contact-item">
+                <span class="icon">✉</span>
+                <span>info@dsefer.co.il</span>
+            </div>
+
         </div>
 
         <div class="footer-links">
-            <h3>קישורים מהירים</h3>
-            <ul>
-                <li><a href="#">אודות</a></li>
-                <li><a href="#">קטלוג ספרים</a></li>
-                <li><a href="#">המומלצים שלנו</a></li>
-                <li><a href="#">צור קשר</a></li>
-            </ul>
+
+            <a [routerLink]="routes.HOME">דף הבית</a>
+
+            <a [routerLink]="routes.CATALOG">קטלוג</a>
+
+            <a [routerLink]="routes.CART">עגלה</a>
+
+            <a [routerLink]="routes.CONTACT">צור קשר</a>
+    
         </div>
 
-        <div class="footer-contact">
-            <h3>יצירת קשר</h3>
-            <p>טלפון: 02-0000000</p>
-            <p>דוא"ל: info@darkey-hasefer.co.il</p>
+        <div class="socials">
+
+            <a href="#">☎</a>
+
+            <a href="#">✉</a>
+
+            <a href="#">💬</a>
+
         </div>
 
     </div>
 
-    <div class="footer-bottom">
+    <div class="copyright">
         © 2026 דרכי הספר | כל הזכויות שמורות
     </div>
+
 </footer>
