@@ -1,67 +1,78 @@
 <footer class="footer">
 
-    <div class="footer-card">
+    <!-- גל עליון -->
+    <div class="footer-wave">
+        <svg viewBox="0 0 1440 180" preserveAspectRatio="none">
+            <path
+                d="M0,0 C350,0 500,30 720,140 C950,30 1100,0 1440,0 L1440,180 L0,180 Z">
+            </path>
+        </svg>
+    </div>
 
-        <div class="footer-logo">
+    <div class="footer-content">
+
+        <!-- לוגו ותיאור -->
+        <div class="footer-section brand">
 
             <img src="/dSefer.jpeg"
-                 alt="דרכי הספר">
+                 alt="דרכי הספר"
+                 class="footer-logo">
 
-            <h2>דרכי הספר</h2>
+            <p>
+                דרכי הספר מאפשרת הזמנה נוחה ומהירה של
+                ספרי לימוד למוסדות חינוך, גנים ובתי ספר
+                מכל רחבי הארץ.
+            </p>
 
-            <span>קטלוג ספרי לימוד</span>
-
-        </div>
-
-        <p class="footer-description">
-            דרכי הספר מספקת פתרון מלא להזמנת ספרי לימוד
-            עבור גנים, בתי ספר ומוסדות חינוך ברחבי הארץ.
-        </p>
-
-        <div class="contact-list">
-
-            <div class="contact-item">
-                <span class="icon">📍</span>
-                <span>ירושלים, ישראל</span>
-            </div>
-
-            <div class="contact-item">
-                <span class="icon">☎</span>
-                <span>08-6352111</span>
-            </div>
-
-            <div class="contact-item">
-                <span class="icon">✉</span>
-                <span>info@dsefer.co.il</span>
-            </div>
+            <p>
+                שירות מקצועי, מחירים מיוחדים וליווי אישי
+                לכל אורך הדרך.
+            </p>
 
         </div>
 
-        <div class="footer-links">
+        <!-- ניווט -->
+        <div class="footer-section">
 
-            <a [routerLink]="routes.HOME">דף הבית</a>
+            <h3>ניווט מהיר</h3>
 
-            <a [routerLink]="routes.CATALOG">קטלוג</a>
+            <a routerLink="/">דף הבית</a>
+            <a routerLink="/catalog">קטלוג</a>
+            <a routerLink="/contact">צור קשר</a>
+            <a routerLink="/cart">עגלה</a>
 
-            <a [routerLink]="routes.CART">עגלה</a>
-
-            <a [routerLink]="routes.CONTACT">צור קשר</a>
-    
         </div>
 
-        <div class="socials">
+        <!-- יצירת קשר -->
+        <div class="footer-section">
 
-            <a href="#">☎</a>
+            <h3>יצירת קשר</h3>
 
-            <a href="#">✉</a>
+            <p>📍 ירושלים, ישראל</p>
+            <p>☎ 03-5791123</p>
+            <p>✉ info@dsefer.co.il</p>
 
-            <a href="#">💬</a>
+        </div>
+
+        <!-- שעות פעילות -->
+        <div class="footer-section">
+
+            <h3>שעות פעילות</h3>
+
+            <p>א'-ה': 08:00 - 17:00</p>
+            <p>יום ו': סגור</p>
+
+            <div class="socials">
+                <a href="#">📞</a>
+                <a href="#">✉</a>
+                <a href="#">💬</a>
+            </div>
 
         </div>
 
     </div>
 
-    <div class="copyright">
+    <div class="footer-bottom">
         © 2026 דרכי הספר | כל הזכויות שמורות
     </div>
 

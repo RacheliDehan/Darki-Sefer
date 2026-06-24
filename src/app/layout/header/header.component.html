@@ -1,9 +1,9 @@
-<header class="header">
+<!-- <header class="header">
 
-  <div class="container">
+  <div class="container"> -->
 
     <!-- Logo -->
-    <a class="logo-wrapper" [routerLink]="routes.HOME">
+    <!-- <a class="logo-wrapper" [routerLink]="routes.HOME">
 
       <img src="/dSefer.jpeg"
            alt="דרכי הספר"
@@ -14,10 +14,10 @@
         <span class="subtitle">קטלוג ספרי לימוד</span>
       </div>
 
-    </a>
+    </a> -->
 
     <!-- Desktop Navigation -->
-    <nav class="main-menu">
+    <!-- <nav class="main-menu">
 
       <a [routerLink]="routes.HOME"
          routerLinkActive="active"
@@ -45,10 +45,10 @@
         צור קשר
       </a>
 
-    </nav>
+    </nav> -->
 
     <!-- Actions -->
-    <div class="header-left">
+    <!-- <div class="header-left">
 
       <a [routerLink]="routes.CART"
          class="cart-btn">
@@ -62,5 +62,31 @@
     </div>
 
   </div>
+
+</header> -->
+<header class="header">
+
+    <div class="logo-section">
+        <img src="/dSefer.jpeg" class="logo">
+
+        <div class="logo-text">
+            <h2>דרכי הספר</h2>
+            <span>ספרי לימוד לכל מוסד</span>
+        </div>
+    </div>
+
+    <nav class="menu">
+        <a [routerLink]="routes.HOME">דף הבית</a>
+        <a [routerLink]="routes.CATALOG" class="active">קטגוריות מוצרים</a>
+        <a href="#">אודות</a>
+        <a [routerLink]="routes.CONTACT">צור קשר</a>
+    </nav>
+
+    <div class="search-box">
+        <button>🔍</button>
+        <input
+                type="text"
+                placeholder="הקלד כדי להתחיל בחיפוש..." />
+    </div>
 
 </header>
