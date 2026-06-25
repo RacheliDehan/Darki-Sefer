@@ -179,3 +179,202 @@
         margin: 0 auto 30px;
     }
 }
+.footer{
+
+    background:#fafafb;
+
+    margin-top:120px;
+
+    border-top:1px solid #ececec;
+}
+
+.footer-container{
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:90px 8% 70px;
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr 1fr 1fr;
+
+    gap:80px;
+}
+
+/* לוגו */
+
+.footer-logo{
+
+    width:80px;
+    height:80px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    margin-bottom:25px;
+}
+
+.brand h3{
+
+    font-size:30px;
+
+    color:#242d3e;
+
+    margin-bottom:25px;
+
+    font-weight:600;
+}
+
+.brand p{
+
+    color:#7a7f87;
+
+    line-height:2;
+
+    margin-bottom:18px;
+
+    max-width:350px;
+}
+
+
+/* עמודות */
+
+.footer-column{
+
+    display:flex;
+
+    flex-direction:column;
+}
+
+.footer-column h4{
+
+    font-size:16px;
+
+    color:#242d3e;
+
+    margin-bottom:28px;
+
+    position:relative;
+
+    font-weight:600;
+}
+
+.footer-column h4::after{
+
+    content:'';
+
+    width:35px;
+    height:2px;
+
+    background:#efb3a4;
+
+    position:absolute;
+
+    bottom:-10px;
+    right:0;
+}
+
+.footer-column a,
+.footer-column span{
+
+    text-decoration:none;
+
+    color:#7a7f87;
+
+    margin-bottom:18px;
+
+    transition:.3s;
+
+    font-size:15px;
+}
+
+.footer-column a:hover{
+
+    color:#ef9a86;
+
+    transform:translateX(-4px);
+}
+
+
+/* Social */
+
+.socials{
+
+    display:flex;
+
+    gap:14px;
+
+    margin-top:25px;
+}
+
+.socials a{
+
+    padding:10px 18px;
+
+    border:1px solid #e7e7e7;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    color:#555;
+}
+
+.socials a:hover{
+
+    background:#ef9a86;
+
+    color:white;
+
+    border-color:#ef9a86;
+}
+
+
+/* תחתית */
+
+.footer-bottom{
+
+    border-top:1px solid #ececec;
+
+    text-align:center;
+
+    padding:28px;
+
+    color:#9b9b9b;
+
+    font-size:14px;
+}
+
+
+/* רספונסיבי */
+
+@media(max-width:950px){
+
+    .footer-container{
+
+        grid-template-columns:1fr;
+
+        gap:50px;
+
+        text-align:center;
+    }
+
+    .brand p{
+
+        max-width:100%;
+    }
+
+    .footer-column h4::after{
+
+        right:50%;
+        transform:translateX(50%);
+    }
+
+    .socials{
+
+        justify-content:center;
+    }
+}
