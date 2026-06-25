@@ -90,3 +90,69 @@
     </div>
 
 </header> -->
+<header class="header">
+
+  <div class="container">
+
+    <!-- Logo -->
+    <a class="logo-wrapper" [routerLink]="routes.HOME">
+
+      <img src="/dSefer.jpeg"
+           alt="דרכי הספר"
+           class="logo">
+
+      <div class="logo-text">
+        <span class="title">דרכי הספר</span>
+        <span class="subtitle">קטלוג ספרי לימוד</span>
+      </div>
+
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="main-menu">
+
+      <a [routerLink]="routes.HOME"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{exact:true}">
+        ראשי
+      </a>
+
+      <a [routerLink]="routes.CATALOG"
+         routerLinkActive="active">
+        קטלוג
+      </a>
+
+      <a [routerLink]="routes.CATALOG"
+         routerLinkActive="active">
+        ספרי לימוד
+      </a>
+
+      <a [routerLink]="routes.CONTACT"
+         routerLinkActive="active">
+        אודות
+      </a>
+
+      <a [routerLink]="routes.CONTACT"
+         routerLinkActive="active">
+        צור קשר
+      </a>
+
+    </nav>
+
+    <!-- Actions -->
+    <div class="header-left">
+
+      <a [routerLink]="routes.CART"
+         class="cart-btn">
+        🛒 סל
+      </a>
+
+      <button class="login-btn">
+        התחברות
+      </button>
+
+    </div>
+
+  </div>
+
+</header>
