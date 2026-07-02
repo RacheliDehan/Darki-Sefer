@@ -1,0 +1,334 @@
+.book-details {
+  .book-header {
+    h1 { font-size: 1.6rem; margin: 0; }
+    .meta { color: #666; margin-top: 4px; }
+  }
+
+  .book-body { display: flex; gap: 16px; margin-top: 12px; }
+  .cover { width: 180px; height: auto; object-fit: cover; }
+  .info { flex: 1; }
+  .quantity { display:flex; gap:8px; align-items:center; margin:8px 0; }
+  .add { background:#1976d2; color:#fff; border:none; padding:8px 12px; cursor:pointer; }
+}
+.book-details {
+
+    max-width: 1300px;
+
+    margin: 170px auto 80px;
+
+    padding: 0 35px;
+
+}
+
+/* ===========================
+   CARD
+=========================== */
+
+.book-body {
+
+    display: grid;
+
+    grid-template-columns: 420px 1fr;
+
+    gap: 60px;
+
+    background: white;
+
+    border-radius: 35px;
+
+    padding: 45px;
+
+    box-shadow: 0 18px 45px rgba(0,0,0,.08);
+
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+.book-header {
+
+    margin-bottom: 35px;
+
+    text-align: center;
+
+}
+
+.book-header h1 {
+
+    font-size: 3rem;
+
+    color: #242d3e;
+
+    margin-bottom: 12px;
+
+}
+
+.book-header .meta {
+
+    color: #ef9a86;
+
+    font-size: 1.1rem;
+
+    font-weight: 600;
+
+}
+
+/* ===========================
+   IMAGE
+=========================== */
+
+.cover {
+
+    width: 100%;
+
+    border-radius: 25px;
+
+    object-fit: cover;
+
+    box-shadow: 0 20px 45px rgba(0,0,0,.15);
+
+    transition: .35s;
+
+}
+
+.cover:hover {
+
+    transform: scale(1.03);
+
+}
+
+/* ===========================
+   CONTENT
+=========================== */
+
+.info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+}
+
+.description {
+
+    color: #666;
+
+    line-height: 2;
+
+    font-size: 1.05rem;
+
+    margin-bottom: 30px;
+
+}
+
+.price {
+
+    font-size: 2rem;
+
+    font-weight: 700;
+
+    color: #ef9a86;
+
+    margin-bottom: 18px;
+
+}
+
+.stock {
+
+    display: inline-block;
+
+    width: fit-content;
+
+    background: #f4f7f6;
+
+    color: #2d3440;
+
+    padding: 10px 18px;
+
+    border-radius: 30px;
+
+    font-weight: 600;
+
+    margin-bottom: 35px;
+
+}
+
+/* ===========================
+   QUANTITY
+=========================== */
+
+.quantity {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-bottom: 30px;
+
+}
+
+.quantity button {
+
+    width: 45px;
+
+    height: 45px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #ef9a86;
+
+    color: white;
+
+    font-size: 1.4rem;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+.quantity button:hover {
+
+    background: #e57e68;
+
+    transform: scale(1.08);
+
+}
+
+.quantity span {
+
+    min-width: 40px;
+
+    text-align: center;
+
+    font-size: 1.3rem;
+
+    font-weight: 700;
+
+    color: #242d3e;
+
+}
+
+/* ===========================
+   TOTAL
+=========================== */
+
+.total {
+
+    font-size: 1.4rem;
+
+    font-weight: 700;
+
+    color: #242d3e;
+
+    margin-bottom: 35px;
+
+}
+
+/* ===========================
+   BUTTON
+=========================== */
+
+.add {
+
+    border: none;
+
+    background: #ef9a86;
+
+    color: white;
+
+    padding: 18px;
+
+    border-radius: 50px;
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+    box-shadow: 0 12px 30px rgba(239,154,134,.35);
+
+}
+
+.add:hover {
+
+    background: #e57e68;
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 18px 35px rgba(229,126,104,.4);
+
+}
+
+/* ===========================
+   LOADING
+=========================== */
+
+.book-details + p,
+p {
+
+    text-align: center;
+
+    margin-top: 180px;
+
+    font-size: 1.3rem;
+
+    color: #888;
+
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width: 900px) {
+
+    .book-details {
+
+        margin-top: 130px;
+
+        padding: 0 20px;
+
+    }
+
+    .book-body {
+
+        grid-template-columns: 1fr;
+
+        padding: 30px;
+
+        gap: 35px;
+
+    }
+
+    .book-header h1 {
+
+        font-size: 2.2rem;
+
+    }
+
+    .cover {
+
+        max-width: 320px;
+
+        margin: auto;
+
+    }
+
+    .quantity {
+
+        justify-content: center;
+
+    }
+
+}

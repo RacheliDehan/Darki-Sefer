@@ -1,0 +1,141 @@
+<section class="order-page">
+
+    <div class="container">
+
+        <div class="title">
+
+            <span>הזמנת ספרים</span>
+
+            <h1>בקשה להצעת מחיר</h1>
+
+            <p>
+                מלאו את הפרטים ונחזור אליכם בהקדם.
+            </p>
+
+        </div>
+
+        <form
+            [formGroup]="form"
+            (ngSubmit)="submit()">
+
+            <div class="grid">
+
+                <div class="field">
+
+                    <label>שם המזמין</label>
+
+                    <input
+                        type="text"
+                        formControlName="customerName">
+
+                </div>
+
+                <div class="field">
+
+                    <label>שם המוסד</label>
+
+                    <input
+                        type="text"
+                        formControlName="institutionName">
+
+                </div>
+
+                <div class="field">
+
+                    <label>סוג הספר</label>
+
+                    <select formControlName="bookId">
+
+                        <option value="">
+                            בחר ספר
+                        </option>
+
+                        <option
+                            *ngFor="let book of books"
+                            [value]="book.id">
+
+                            {{book.name}}
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="field">
+
+                    <label>כמות</label>
+
+                    <input
+                        type="number"
+                        formControlName="quantity">
+
+                </div>
+
+                <div class="field full">
+
+                    <label>משלוח</label>
+
+                    <div class="radio">
+
+                        <label>
+
+                            <input
+                                type="radio"
+                                [value]="true"
+                                formControlName="delivery">
+
+                            כן
+
+                        </label>
+
+                        <label>
+
+                            <input
+                                type="radio"
+                                [value]="false"
+                                formControlName="delivery">
+
+                            לא
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <div class="field">
+
+                    <label>טלפון</label>
+
+                    <input
+                        type="text"
+                        formControlName="phone">
+
+                </div>
+
+                <div class="field">
+
+                    <label>מייל</label>
+
+                    <input
+                        type="email"
+                        formControlName="email">
+
+                </div>
+
+            </div>
+
+            <button
+                class="submit-btn"
+                type="submit">
+
+                שלח בקשה להצעת מחיר
+
+            </button>
+
+        </form>
+
+    </div>
+
+</section>

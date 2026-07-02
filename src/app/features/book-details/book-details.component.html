@@ -1,0 +1,29 @@
+<section class="book-details" *ngIf="store.selectedBook() as book; else loading">
+  <div class="book-header">
+    <h1>{{ book.title }}</h1>
+    <div class="meta">{{ book.author }}</div>
+  </div>
+
+  <div class="book-body">
+    <img [src]="book.images?.[0]" alt="{{ book.title }}" class="cover" />
+    <div class="info">
+      <p class="description">{{ book.description }}</p>
+      <div class="price">{{ book.price }} {{ book.currency }}</div>
+      <div class="stock">זמין: {{ book.availableQuantity }}</div>
+
+      <div class="quantity">
+        <button (click)="store.quantity.update(v => v > 1 ? v - 1 : 1)">-</button>
+        <span>{{ store.quantity() }}</span>
+        <button (click)="store.quantity.update(v => v + 1)">+</button>
+      </div>
+
+      <div class="total">סה"כ: {{ store.calculatedPrice() }} {{ book.currency }}</div>
+
+      <button class="add" (click)="addToCart(book.id, store.quantity())">הוסף לעגלה</button>
+    </div>
+  </div>
+</section>
+
+<ng-template #loading>
+  <p>טוען פרטי ספר...</p>
+</ng-template>

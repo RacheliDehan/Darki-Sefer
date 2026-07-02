@@ -41,6 +41,7 @@ export class OrderService {
     return order;
   }
 
+  
   generateEmailPayload(order: Order): { subject: string; body: string } {
     const subject = `הזמנה חדשה #${order.id}`;
     const lines = [
@@ -109,4 +110,6 @@ export class OrderService {
   private generateId(): string {
     return `order_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
   }
+
+
 }

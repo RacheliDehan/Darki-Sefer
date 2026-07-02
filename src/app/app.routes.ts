@@ -28,6 +28,16 @@ export const routes: Routes = [
         }
       },
       {
+        path: pathFromRoute(ROUTE_CONSTANTS.ORDER_REQUEST),
+        loadComponent: () => import('./features/order-request/order-request.component').then(m => m.OrderRequestComponent),
+        data: { title: 'הזמנת ספרים | DSefer' }
+      },
+      {
+        path: pathFromRoute(ROUTE_CONSTANTS.BOOK_DETAILS),
+        loadComponent: () => import('./features/book-details/book-details.component').then(m => m.BookDetailsComponent),
+        data: { title: 'פרטי ספר | DSefer' }
+      },
+      {
         path: pathFromRoute(ROUTE_CONSTANTS.CART),
         loadComponent: () => import('./features/cart/cart.component').then(m => m.CartComponent),
         data: { title: 'עגלת קניות | DSefer' }
