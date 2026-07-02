@@ -1,4 +1,4 @@
-<section class="cart">
+<!-- <section class="cart">
   <h1>עגלה</h1>
   <ul>
     <li *ngFor="let item of store.items()">
@@ -12,4 +12,148 @@
     <div>סה"כ פריטים: {{ store.totalBooks() }}</div>
     <div>סה"כ לתשלום: {{ store.totalAmount() }}</div>
   </div>
+</section> -->
+
+
+<!-- סל עם פרטי הצעת מחיר -->
+<section class="checkout-page">
+
+  <h1>סל קניות והזמנה</h1>
+
+  <!-- עגלה -->
+  <div class="cart-box">
+
+    <h2>פריטים בעגלה</h2>
+
+    <ul>
+      <li *ngFor="let item of store.items()">
+
+        <div class="title">
+          {{ item.book?.title }}
+        </div>
+
+        <div>
+          {{ item.quantity }} × {{ item.unitPrice }}
+        </div>
+
+        <div class="total">
+          {{ item.totalPrice }}
+        </div>
+
+      </li>
+    </ul>
+
+    <div class="summary">
+
+      <div>
+        סה"כ ספרים: {{ store.totalBooks() }}
+      </div>
+
+      <div>
+        סה"כ לתשלום: {{ store.totalAmount() }}
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- טופס -->
+  <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+
+    <h2>פרטי לקוח</h2>
+
+    <div class="grid">
+
+      <div class="field">
+        <label>שם פרטי *</label>
+        <input formControlName="firstName" />
+        <small *ngIf="form.get('firstName')?.touched && form.get('firstName')?.invalid">
+          חובה להזין שם פרטי
+        </small>
+      </div>
+
+      <div class="field">
+        <label>שם משפחה *</label>
+        <input formControlName="lastName" />
+        <small *ngIf="form.get('lastName')?.touched && form.get('lastName')?.invalid">
+          חובה להזין שם משפחה
+        </small>
+      </div>
+
+      <div class="field">
+        <label>שם מוסד / בית ספר *</label>
+        <input formControlName="institutionName" />
+        <small *ngIf="form.get('institutionName')?.touched && form.get('institutionName')?.invalid">
+          חובה להזין מוסד
+        </small>
+      </div>
+
+      <div class="field">
+        <label>טלפון *</label>
+        <input formControlName="phone" />
+        <small *ngIf="form.get('phone')?.touched && form.get('phone')?.invalid">
+          טלפון לא תקין
+        </small>
+      </div>
+
+      <div class="field">
+        <label>טלפון נוסף</label>
+        <input formControlName="phone2" />
+      </div>
+
+      <div class="field">
+        <label>דוא"ל *</label>
+        <input formControlName="email" />
+        <small *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
+          אימייל לא תקין
+        </small>
+      </div>
+
+      <div class="field">
+        <label>עיר</label>
+        <input formControlName="city" />
+      </div>
+
+      <div class="field">
+        <label>כתובת מלאה</label>
+        <input formControlName="address" />
+      </div>
+
+      <div class="field">
+        <label>חשבונית על שם</label>
+        <input formControlName="invoiceName" />
+        <small *ngIf="form.get('invoiceName')?.touched && form.get('invoiceName')?.invalid">
+          חובה להזין שם לחשבונית
+        </small>
+      </div>
+
+      <div class="field full">
+        <label>הערות להזמנה</label>
+        <textarea formControlName="notes"></textarea>
+      </div>
+
+      <div class="field full">
+        <label>משלוח *</label>
+
+        <div class="radio">
+          <label>
+            <input type="radio" [value]="true" formControlName="delivery" />
+            כן
+          </label>
+
+          <label>
+            <input type="radio" [value]="false" formControlName="delivery" />
+            לא
+          </label>
+        </div>
+      </div>
+
+    </div>
+
+    <button type="submit" class="submit-btn">
+      שליחת הזמנה
+    </button>
+
+  </form>
+
 </section>
