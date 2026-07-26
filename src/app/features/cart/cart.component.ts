@@ -18,11 +18,12 @@
 // }
 
 
-import { Component, inject } from '@angular/core';
+import { Component, inject , signal} from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CartStore } from './store/cart.store'; // תתאימי נתיב לפי שלך
-
+import { OrderRequestComponent } from '../order-request/order-request.component';
+import { OrderService } from '../../services/order.service';
 @Component({
   selector: 'app-cart',
   standalone: true,
@@ -34,6 +35,13 @@ export class CartComponent {
 
   private fb = inject(FormBuilder);
   store = inject(CartStore);
+private orderService = inject(OrderService);
+
+loading = signal(false);
+
+successMessage = signal<string | null>(null);
+
+errorMessage = signal<string | null>(null);
 
   form = this.fb.group({
 
@@ -57,29 +65,95 @@ export class CartComponent {
 
     delivery: [true, [Validators.required]]
 
+
   });
+  orderRequestComponent = OrderRequestComponent;
+//   submit() {
 
-  submit() {
+//     if (this.form.invalid) {
+//       this.form.markAllAsTouched();
+//       return;
+//     }
+// debugger
+//     const payload = {
+//       customer: this.form.value,
+//       items: this.store.items(),
+//       totals: {
+//         books: this.store.totalBooks(),
+//         amount: this.store.totalAmount()
+//       }
+//     };
 
-    if (this.form.invalid) {
-      this.form.markAllAsTouched();
-      return;
-    }
+//     console.log('ORDER:', payload);
 
-    const payload = {
-      customer: this.form.value,
-      items: this.store.items(),
-      totals: {
-        books: this.store.totalBooks(),
-        amount: this.store.totalAmount()
-      }
-    };
+//     alert('ההזמנה נשלחה בהצלחה ✔');
 
-    console.log('ORDER:', payload);
+//     // this.store.clearCart?.(); // אם יש לך פונקציה כזו
+//     this.form.reset({ delivery: true });
+//   }
+//   //-0-0000000000000000000000000000------------------0
+  async submit(): Promise<void> {
 
-    alert('ההזמנה נשלחה בהצלחה ✔');
-
-    // this.store.clearCart?.(); // אם יש לך פונקציה כזו
-    this.form.reset({ delivery: true });
+  if (this.form.invalid) {
+    this.form.markAllAsTouched();
+    return;
   }
+
+  this.loading.set(true);
+  this.errorMessage.set(null);
+  this.successMessage.set(null);
+
+  try {
+
+    const formValue = this.form.getRawValue();
+
+    await this.orderService.sendQuoteRequest({
+
+      customerId: crypto.randomUUID(),
+
+      customerName: `${formValue.firstName} ${formValue.lastName}`,
+
+      institutionName: formValue.institutionName!,
+
+      bookIds: this.store.items().map(i => i.bookId),
+
+      bookName: this.store.items().map(i => i.book?.title).join(', '),
+
+      quantities: this.store.items().map(i => i.quantity),
+
+      quantity: this.store.totalBooks(),
+
+      delivery: formValue.delivery!,
+
+      phone: formValue.phone!,
+
+      email: formValue.email!,
+
+      currency: 'ILS',
+
+      requestedAt: new Date().toISOString(),
+
+      notes: formValue.notes ?? ''
+
+    });
+
+    this.successMessage.set('ההזמנה נשלחה בהצלחה!');
+
+    this.form.reset({
+      delivery: true
+    });
+
+  } catch (err) {
+
+    this.errorMessage.set(
+      err instanceof Error ? err.message : 'אירעה שגיאה'
+    );
+
+  } finally {
+
+    this.loading.set(false);
+
+  }
+
+}
 }

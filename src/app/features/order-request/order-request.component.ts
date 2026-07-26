@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {
     FormBuilder,
     ReactiveFormsModule,
-    Validators
+    Validators,
+    FormGroup
 } from '@angular/forms';
 
-import { QuoteRequestService } from '../../services/quote-request.service';
+import { OrderService } from '../../services/order.service';
 
 @Component({
     selector: 'app-order-request',
@@ -20,59 +21,140 @@ import { QuoteRequestService } from '../../services/quote-request.service';
 })
 export class OrderRequestComponent {
 
-    fb = inject(FormBuilder);
+    private fb = inject(FormBuilder);
+    private orderService = inject(OrderService);
 
-    quoteService = inject(QuoteRequestService);
+
+    loading = signal(false);
+
+    successMessage = signal<string | null>(null);
+
+    errorMessage = signal<string | null>(null);
+
 
     books = [
-
-        { id:1,name:'ספר בראשית'},
-        { id:2,name:'ספר חשבון'},
-        { id:3,name:'ספר אנגלית'},
-        { id:4,name:'ספר מדעים'}
-
+        {
+            id: '1',
+            name: 'ספר בראשית'
+        },
+        {
+            id: '2',
+            name: 'ספר חשבון'
+        },
+        {
+            id: '3',
+            name: 'ספר אנגלית'
+        },
+        {
+            id: '4',
+            name: 'ספר מדעים'
+        }
     ];
 
-    form = this.fb.group({
 
-        customerName:['',Validators.required],
+    form: FormGroup = this.fb.group({
 
-        institutionName:['',Validators.required],
+        customerName: [
+            '',
+            Validators.required
+        ],
 
-        bookId:['',Validators.required],
+        institutionName: [
+            '',
+            Validators.required
+        ],
 
-        quantity:[1,[Validators.required,Validators.min(1)]],
+        bookId: [
+            '',
+            Validators.required
+        ],
 
-        delivery:[true],
+        quantity: [
+            1,
+            [
+                Validators.required,
+                Validators.min(1)
+            ]
+        ],
 
-        phone:['',Validators.required],
+        delivery: [
+            true
+        ],
 
-        email:['',[Validators.required,Validators.email]]
+        phone: [
+            '',
+            Validators.required
+        ],
+
+        email: [
+            '',
+            [
+                Validators.required,
+                Validators.email
+            ]
+        ],
+
+        notes: [
+            ''
+        ]
 
     });
 
-    submit(){
-
-        if(this.form.invalid){
-
-            this.form.markAllAsTouched();
-
-            return;
-
-        }
-
-        // this.quoteService.sendRequest(this.form.value as any)
-        //     .subscribe(()=>{
-
-        //         alert("הבקשה נשלחה בהצלחה");
-
-        //         this.form.reset({
-        //             quantity:1,
-        //             delivery:true
-        //         });
-
-        //     });
-
+    private resetForm(): void {
+        this.form.reset({
+            quantity: 1,
+            delivery: true
+        });
     }
 
+    async submit(): Promise<void> {
+        if (this.form.invalid) {
+            this.form.markAllAsTouched();
+            return;
+        }
+        this.loading.set(true);
+        this.errorMessage.set(null);
+        this.successMessage.set(null);
+
+        try {
+            const formValue = this.form.getRawValue();
+            const selectedBook = this.books.find(
+               book => book.id === formValue.bookId
+            );
+            if (!selectedBook) {
+                throw new Error('לא נבחר ספר');
+            }
+  await this.orderService.sendQuoteRequest({
+        customerId: crypto.randomUUID(),
+        bookIds: [
+            selectedBook.id
+        ],
+        quantities: [
+            formValue.quantity
+        ],
+        currency: 'ILS',
+        requestedAt: new Date().toISOString(),
+        notes: '',
+        customerName: formValue.customerName,
+        institutionName: formValue.institutionName,
+        bookName: selectedBook.name,
+        quantity: formValue.quantity,
+        delivery: formValue.delivery,
+        phone: formValue.phone,
+        email: formValue.email
+    });
+            this.successMessage.set(
+                'הבקשה נשלחה בהצלחה! נחזור אליך בהקדם.'
+            );
+            this.resetForm();
+        } catch (error) {
+            const message = error instanceof Error
+                ? error.message
+                : 'אירעה שגיאה בשליחת הבקשה';
+            this.errorMessage.set(message);
+        } finally {
+
+           this.loading.set(false);
+        }
+    }
 }

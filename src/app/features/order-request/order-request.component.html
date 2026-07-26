@@ -3,134 +3,163 @@
     <div class="container">
 
         <div class="title">
-
             <span>הזמנת ספרים</span>
-
             <h1>בקשה להצעת מחיר</h1>
-
-            <p>
-                מלאו את הפרטים ונחזור אליכם בהקדם.
-            </p>
-
+            <p>מלאו את הפרטים ונחזור אליכם בהקדם.</p>
         </div>
 
-        <form
-            [formGroup]="form"
-            (ngSubmit)="submit()">
+        <!-- Success Message -->
+        @if (successMessage()) {
+            <div class="alert alert-success">
+                <strong>הצלחה!</strong> {{ successMessage() }}
+            </div>
+        }
+
+        <!-- Error Message -->
+        @if (errorMessage()) {
+            <div class="alert alert-error">
+                <strong>שגיאה!</strong> {{ errorMessage() }}
+            </div>
+        }
+
+        <form [formGroup]="form" (ngSubmit)="submit()">
 
             <div class="grid">
 
+                <!-- Customer Name -->
                 <div class="field">
-
-                    <label>שם המזמין</label>
-
+                    <label for="customerName">שם המזמין <span class="required">*</span></label>
                     <input
+                        id="customerName"
                         type="text"
-                        formControlName="customerName">
-
+                        formControlName="customerName"
+                        [class.invalid]="form.get('customerName')?.touched && form.get('customerName')?.invalid">
+                    @if (form.get('customerName')?.touched && form.get('customerName')?.invalid) {
+                        <span class="error-message">שדה זה הוא חובה</span>
+                    }
                 </div>
 
+                <!-- Institution Name -->
                 <div class="field">
-
-                    <label>שם המוסד</label>
-
+                    <label for="institutionName">שם המוסד <span class="required">*</span></label>
                     <input
+                        id="institutionName"
                         type="text"
-                        formControlName="institutionName">
-
+                        formControlName="institutionName"
+                        [class.invalid]="form.get('institutionName')?.touched && form.get('institutionName')?.invalid">
+                    @if (form.get('institutionName')?.touched && form.get('institutionName')?.invalid) {
+                        <span class="error-message">שדה זה הוא חובה</span>
+                    }
                 </div>
 
+                <!-- Book Selection -->
                 <div class="field">
-
-                    <label>סוג הספר</label>
-
-                    <select formControlName="bookId">
-
-                        <option value="">
-                            בחר ספר
-                        </option>
-
-                        <option
-                            *ngFor="let book of books"
-                            [value]="book.id">
-
-                            {{book.name}}
-
-                        </option>
-
+                    <label for="bookId">סוג הספר <span class="required">*</span></label>
+                    <select
+                        id="bookId"
+                        formControlName="bookId"
+                        [class.invalid]="form.get('bookId')?.touched && form.get('bookId')?.invalid">
+                        <option value="">בחר ספר</option>
+                        @for (book of books; track book.id) {
+                            <option [value]="book.id">{{ book.name }} </option>
+                            <!-- <option [value]="book.id">{{ book.name }} - ₪{{ book.price }}</option> -->
+                        }
                     </select>
-
+                    @if (form.get('bookId')?.touched && form.get('bookId')?.invalid) {
+                        <span class="error-message">בחר ספר</span>
+                    }
                 </div>
 
+                <!-- Quantity -->
                 <div class="field">
-
-                    <label>כמות</label>
-
+                    <label for="quantity">כמות <span class="required">*</span></label>
                     <input
+                        id="quantity"
                         type="number"
-                        formControlName="quantity">
-
+                        formControlName="quantity"
+                        min="1"
+                        [class.invalid]="form.get('quantity')?.touched && form.get('quantity')?.invalid">
+                    @if (form.get('quantity')?.touched && form.get('quantity')?.invalid) {
+                        <span class="error-message">הקמות חייבת להיות 1 ומעלה</span>
+                    }
                 </div>
 
+                <!-- Delivery -->
                 <div class="field full">
-
                     <label>משלוח</label>
-
                     <div class="radio">
-
                         <label>
-
                             <input
                                 type="radio"
                                 [value]="true"
                                 formControlName="delivery">
-
                             כן
-
                         </label>
-
                         <label>
-
                             <input
                                 type="radio"
                                 [value]="false"
                                 formControlName="delivery">
-
                             לא
-
                         </label>
-
                     </div>
-
                 </div>
 
+                <!-- Phone -->
                 <div class="field">
-
-                    <label>טלפון</label>
-
+                    <label for="phone">טלפון <span class="required">*</span></label>
                     <input
-                        type="text"
-                        formControlName="phone">
-
+                        id="phone"
+                        type="tel"
+                        formControlName="phone"
+                        [class.invalid]="form.get('phone')?.touched && form.get('phone')?.invalid">
+                    @if (form.get('phone')?.touched && form.get('phone')?.invalid) {
+                        <span class="error-message">שדה זה הוא חובה</span>
+                    }
                 </div>
 
+                <!-- Email -->
                 <div class="field">
-
-                    <label>מייל</label>
-
+                    <label for="email">מייל <span class="required">*</span></label>
                     <input
+                        id="email"
                         type="email"
-                        formControlName="email">
+                        formControlName="email"
+                        [class.invalid]="form.get('email')?.touched && form.get('email')?.invalid">
+                    @if (form.get('email')?.touched && form.get('email')?.invalid) {
+                        <span class="error-message">
+                            @if (form.get('email')?.hasError('required')) {
+                                שדה זה הוא חובה
+                            } @else if (form.get('email')?.hasError('email')) {
+                                אנא הכנס כתובת מייל תקינה
+                            }
+                        </span>
+                    }
+                </div>
 
+                <!-- Notes -->
+                <div class="field full">
+                    <label for="notes">הערות (אופציונלי)</label>
+                    <textarea
+                        id="notes"
+                        formControlName="notes"
+                        rows="4"
+                        placeholder="הערות או דרישות נוספות..."></textarea>
                 </div>
 
             </div>
 
             <button
                 class="submit-btn"
-                type="submit">
+                type="submit"
+                [disabled]="loading() || form.invalid">
 
-                שלח בקשה להצעת מחיר
+                @if (loading()) {
+                    <span class="loading-spinner"></span>
+                    שליחה...
+                } @else {
+                    שלח בקשה להצעת מחיר
+                }
 
             </button>
 
