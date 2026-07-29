@@ -128,6 +128,7 @@ errorMessage = signal<string | null>(null);
       notes: formValue.notes ?? ''
 
     });
+    alert('ההזמנה נשלחה בהצלחה! נציג יחזור אליך בהקדם');
   } catch (err) {
 
     this.errorMessage.set(
