@@ -1,23 +1,3 @@
-// import { Component } from '@angular/core';
-// import { CommonModule } from '@angular/common';
-// import { CartStore } from './store/cart.store';
-
-// @Component({
-//   selector: 'app-cart',
-//   standalone: true,
-//   imports: [CommonModule],
-//   templateUrl: './cart.component.html',
-//   styleUrls: ['./cart.component.scss']
-// })
-// export class CartComponent {
-//   constructor(public readonly store: CartStore) {
-    
-//   }
-  
- 
-// }
-
-
 import { Component, inject , signal} from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -68,30 +48,7 @@ errorMessage = signal<string | null>(null);
 
   });
   orderRequestComponent = OrderRequestComponent;
-//   submit() {
 
-//     if (this.form.invalid) {
-//       this.form.markAllAsTouched();
-//       return;
-//     }
-// debugger
-//     const payload = {
-//       customer: this.form.value,
-//       items: this.store.items(),
-//       totals: {
-//         books: this.store.totalBooks(),
-//         amount: this.store.totalAmount()
-//       }
-//     };
-
-//     console.log('ORDER:', payload);
-
-//     alert('ההזמנה נשלחה בהצלחה ✔');
-
-//     // this.store.clearCart?.(); // אם יש לך פונקציה כזו
-//     this.form.reset({ delivery: true });
-//   }
-//   //-0-0000000000000000000000000000------------------0
   async submit(): Promise<void> {
 
   if (this.form.invalid) {
@@ -142,7 +99,35 @@ errorMessage = signal<string | null>(null);
     this.form.reset({
       delivery: true
     });
+ await this.orderService.sendQuoteRequest({
 
+      customerId: crypto.randomUUID(),
+
+      customerName: `${formValue.firstName} ${formValue.lastName}`,
+
+      institutionName: formValue.institutionName!,
+
+      bookIds: this.store.items().map(i => i.bookId),
+
+      bookName: this.store.items().map(i => i.book?.title).join(', '),
+
+      quantities: this.store.items().map(i => i.quantity),
+
+      quantity: this.store.totalBooks(),
+
+      delivery: formValue.delivery!,
+
+      phone: formValue.phone!,
+
+      email:"r8175r@gmail.com",
+
+      currency: 'ILS',
+
+      requestedAt: new Date().toISOString(),
+
+      notes: formValue.notes ?? ''
+
+    });
   } catch (err) {
 
     this.errorMessage.set(
