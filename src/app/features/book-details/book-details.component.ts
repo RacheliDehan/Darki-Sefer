@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, ActivatedRoute } from '@angular/router';
 import { BookDetailsStore } from './store/book-details.store';
 import { CartService } from '../../services/cart.service';
+import { ToastComponent } from '../../shared/toast/toast'
+import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-book-details',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ToastComponent],
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.scss']
 })
@@ -22,10 +24,12 @@ export class BookDetailsComponent {
       void this.store.loadBook(id);
     }
   }
-
+@ViewChild(ToastComponent)
+toast!: ToastComponent;
   addToCart(bookId: string, qty: number): void {
     try {
       this.cartService.addItem(bookId, qty);
+        this.toast.show('המוצר נוסף בהצלחה');
     } catch (e) {
       // keep simple: console for now
       // real app should show user-facing error
