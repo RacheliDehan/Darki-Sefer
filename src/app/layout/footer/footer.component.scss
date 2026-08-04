@@ -378,3 +378,29 @@
         justify-content:center;
     }
 }
+
+
+//  icon 
+.socials {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.socials a {
+    display: inline-flex;
+    transition: transform .25s ease, box-shadow .25s ease;
+    border-radius: 50%;
+}
+
+.socials a:hover {
+    transform: translateY(-4px) scale(1.08);
+}
+
+.socials img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    box-shadow: 0 6px 18px rgba(0,0,0,.18);
+    object-fit: cover;
+}

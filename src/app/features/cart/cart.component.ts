@@ -1,4 +1,4 @@
-import { Component, inject , signal} from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CartStore } from './store/cart.store'; // תתאימי נתיב לפי שלך
@@ -15,13 +15,13 @@ export class CartComponent {
 
   private fb = inject(FormBuilder);
   store = inject(CartStore);
-private orderService = inject(OrderService);
+  private orderService = inject(OrderService);
 
-loading = signal(false);
+  loading = signal(false);
 
-successMessage = signal<string | null>(null);
+  successMessage = signal<string | null>(null);
 
-errorMessage = signal<string | null>(null);
+  errorMessage = signal<string | null>(null);
 
   form = this.fb.group({
 
@@ -51,95 +51,95 @@ errorMessage = signal<string | null>(null);
 
   async submit(): Promise<void> {
 
-  if (this.form.invalid) {
-    this.form.markAllAsTouched();
-    return;
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+
+    this.loading.set(true);
+    this.errorMessage.set(null);
+    this.successMessage.set(null);
+
+    try {
+
+      const formValue = this.form.getRawValue();
+
+      await this.orderService.sendQuoteRequest({
+
+        customerId: crypto.randomUUID(),
+
+        customerName: `${formValue.firstName} ${formValue.lastName}`,
+
+        institutionName: formValue.institutionName!,
+
+        bookIds: this.store.items().map(i => i.bookId),
+
+        bookName: this.store.items().map(i => i.book?.title).join(', '),
+
+        quantities: this.store.items().map(i => i.quantity),
+
+        quantity: this.store.totalBooks(),
+
+        delivery: formValue.delivery!,
+
+        phone: formValue.phone!,
+
+        email: formValue.email!,
+
+        currency: 'ILS',
+
+        requestedAt: new Date().toISOString(),
+
+        notes: formValue.notes ?? ''
+
+      });
+
+      this.successMessage.set('ההזמנה נשלחה בהצלחה!');
+
+      this.form.reset({
+        delivery: true
+      });
+      await this.orderService.sendQuoteRequest({
+
+        customerId: crypto.randomUUID(),
+
+        customerName: `${formValue.firstName} ${formValue.lastName}`,
+
+        institutionName: formValue.institutionName!,
+
+        bookIds: this.store.items().map(i => i.bookId),
+
+        bookName: this.store.items().map(i => i.book?.title).join(', '),
+
+        quantities: this.store.items().map(i => i.quantity),
+
+        quantity: this.store.totalBooks(),
+
+        delivery: formValue.delivery!,
+
+        phone: formValue.phone!,
+
+        email: "Office@d-sefer.co.il",
+
+        currency: 'ILS',
+
+        requestedAt: new Date().toISOString(),
+
+        notes: formValue.notes ?? ''
+
+      });
+      alert('ההזמנה נשלחה בהצלחה! נציג יחזור אליך בהקדם');
+    } catch (err) {
+
+      this.errorMessage.set(
+        err instanceof Error ? err.message : 'אירעה שגיאה'
+      );
+
+    } finally {
+
+      this.loading.set(false);
+
+    }
+
   }
-
-  this.loading.set(true);
-  this.errorMessage.set(null);
-  this.successMessage.set(null);
-
-  try {
-
-    const formValue = this.form.getRawValue();
-
-    await this.orderService.sendQuoteRequest({
-
-      customerId: crypto.randomUUID(),
-
-      customerName: `${formValue.firstName} ${formValue.lastName}`,
-
-      institutionName: formValue.institutionName!,
-
-      bookIds: this.store.items().map(i => i.bookId),
-
-      bookName: this.store.items().map(i => i.book?.title).join(', '),
-
-      quantities: this.store.items().map(i => i.quantity),
-
-      quantity: this.store.totalBooks(),
-
-      delivery: formValue.delivery!,
-
-      phone: formValue.phone!,
-
-      email: formValue.email!,
-
-      currency: 'ILS',
-
-      requestedAt: new Date().toISOString(),
-
-      notes: formValue.notes ?? ''
-
-    });
-
-    this.successMessage.set('ההזמנה נשלחה בהצלחה!');
-
-    this.form.reset({
-      delivery: true
-    });
- await this.orderService.sendQuoteRequest({
-
-      customerId: crypto.randomUUID(),
-
-      customerName: `${formValue.firstName} ${formValue.lastName}`,
-
-      institutionName: formValue.institutionName!,
-
-      bookIds: this.store.items().map(i => i.bookId),
-
-      bookName: this.store.items().map(i => i.book?.title).join(', '),
-
-      quantities: this.store.items().map(i => i.quantity),
-
-      quantity: this.store.totalBooks(),
-
-      delivery: formValue.delivery!,
-
-      phone: formValue.phone!,
-
-      email:"Office@d-sefer.co.il",
-
-      currency: 'ILS',
-
-      requestedAt: new Date().toISOString(),
-
-      notes: formValue.notes ?? ''
-
-    });
-    alert('ההזמנה נשלחה בהצלחה! נציג יחזור אליך בהקדם');
-  } catch (err) {
-
-    this.errorMessage.set(
-      err instanceof Error ? err.message : 'אירעה שגיאה'
-    );
-
-  } finally {
-
-    this.loading.set(false);
-
-  }
-
-}
 }
