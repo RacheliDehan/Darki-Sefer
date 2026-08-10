@@ -10,7 +10,7 @@ import { BooksSliderComponent } from '../books-slider/books-slider.component';
   standalone: true,
   imports: [CommonModule, RouterModule, BooksSliderComponent],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss', './home2.component.scss']
 })
 export class HomeComponent {
   constructor(public readonly catalogStore: CatalogStore) {}
