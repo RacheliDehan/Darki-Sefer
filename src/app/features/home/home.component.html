@@ -1,152 +1,246 @@
-
-<!-- HERO -->
 <section class="hero">
+    <div class="hero__container">
+        <!-- ================= RIGHT CONTENT ================= -->
+        <div class="hero__content">
+            <h1 class="hero__title">
+                איכות של<br>
+                למידה.<br>
+                ערכים של<br>
+                תורה.
+            </h1>
+            <a [routerLink]="routes.CATALOG" class="hero__button">
+                <span>לקטלוג הספרים המלא</span>
+                <span class="button__icon">←</span>
 
-    <div class="hero-text">
-        <span class="tag">הוצאה לאור • ספרי לימוד איכותיים</span>
-
-        <h1>
-            ספרי לימוד ברמה אחרת
-        </h1>
-
-        <p>
-            אנו משקיעים את מיטב הסופרים, צוותי ההוראה והעורכים המקצועיים
-            כדי להעניק לתלמידים ספרים איכותיים, מדויקים ומאושרים.
-        </p>
-
-        <div class="hero-features">
-            <div>✔ תכנים מאושרים</div>
-            <div>✔ דפוס איכותי</div>
-            <div>✔ אישורי משרד החינוך</div>
-            <div>✔ ליווי רבני מלא</div>
+            </a>
         </div>
+        <!-- ================= LEFT IMAGE ================= -->
 
-        <div class="hero-buttons">
-            <button class="btn-primary">לצפייה בקטלוג</button>
-            <button class="btn-secondary">צור קשר</button>
+        <div class="hero__image">
+            <div class="image-wrapper">
+                <img src="./BOOK.png" alt="ספרי לימוד">
+            </div>
         </div>
     </div>
 
-    <div class="hero-image">
-        <img src="/dSefer.jpeg" alt="">
+    <!-- ================= FEATURES ================= -->
+
+    <div class="features">
+
+        <div class="feature">
+
+            <div class="feature__icon">
+
+                📚
+
+            </div>
+
+            <h3>
+                תוכן לימודי
+            </h3>
+
+            <p>
+                מגוון רחב של ספרי לימוד איכותיים
+            </p>
+
+        </div>
+
+        <div class="feature">
+
+            <div class="feature__icon">
+
+                🎓
+
+            </div>
+
+            <h3>
+                התאמה למוסדות
+            </h3>
+
+            <p>
+                פתרונות לכל מוסד חינוכי
+            </p>
+
+        </div>
+
+        <div class="feature">
+
+            <div class="feature__icon">
+
+                💬
+
+            </div>
+
+            <h3>
+                שירות אישי
+            </h3>
+
+            <p>
+                ייעוץ וליווי מקצועי בבחירת הספרים
+            </p>
+
+        </div>
+
+        <div class="feature">
+
+            <div class="feature__icon">
+
+                ✍️
+
+            </div>
+
+            <h3>
+                חומרי עזר
+            </h3>
+
+            <p>
+                חוברות, דפי עבודה ועזרי הוראה
+            </p>
+
+        </div>
+
+        <div class="feature">
+
+            <div class="feature__icon">
+
+                🏫
+
+            </div>
+
+            <h3>
+                מוסדות חינוך
+            </h3>
+
+            <p>
+                פתרונות לכל שכבות הגיל
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Scroll Indicator -->
+
+    <div class="scroll-indicator">
+
+        <span></span>
+
     </div>
 
 </section>
 
+<app-books-slider></app-books-slider>
 
-<!-- INFO SECTION -->
-<section class="about">
-
-    <div class="card">
-        <h3>מיטב הסופרים</h3>
-        <p>
-            צוות מקצועי של מחברים, עורכים ומחנכים מובילים.
-        </p>
-    </div>
-
-    <div class="card">
-        <h3>איכות ללא פשרות</h3>
-        <p>
-            הדפסה איכותית, עיצוב מוקפד וחומרי גלם מהשורה הראשונה.
-        </p>
-    </div>
-
-    <div class="card">
-        <h3>אישורים מלאים</h3>
-        <p>
-            תכנים המאושרים ע"י אנשי חינוך ורבנים מובילים.
-        </p>
-    </div>
-
-</section>
+ 
 
 
-<!-- BOOK GRID -->
-<section class="books-section">
+<section class="services">
 
-    <div class="section-title">
-        <h2>קטגוריות מובילות</h2>
-        <p>מבחר ספרים לכל שכבות הגיל</p>
-    </div>
+    <div class="services-grid">
 
-    <div class="books-grid">
+        <div class="left">
 
-        <div class="book-card">
-            <img src="/dSefer.jpeg">
-            <h3>כיתות א'-ב'</h3>
-            <p>ספרי יסוד ולימוד חווייתי.</p>
+            <div class="small-card dark">
+
+                ✍️
+
+                <h3>מגוון רחב</h3>
+
+                <p>של נושאים ורמות</p>
+
+            </div>
+
+            <div class="small-card green">
+
+                📖
+
+                <h3>ניסיון של 20 שנה</h3>
+
+            </div>
+
+            <div class="small-card dark">
+
+                💡
+
+                <h3>תוכן מאושר</h3>
+
+            </div>
+
+            <div class="small-card dark">
+
+                🎓
+
+                <h3>חומרי איכות</h3>
+
+            </div>
+
         </div>
 
-        <div class="book-card">
-            <img src="/dSefer.jpeg">
-            <h3>כיתות ג'-ד'</h3>
-            <p>תכנים עשירים ומדויקים.</p>
-        </div>
+        <div class="right">
 
-        <div class="book-card">
-            <img src="/dSefer.jpeg">
-            <h3>כיתות ה'-ו'</h3>
-            <p>העמקה ופיתוח חשיבה.</p>
-        </div>
+            <img src="book1.jpg" alt="ספרי לימוד">
 
-        <div class="book-card">
-            <img src="/dSefer.jpeg">
-            <h3>חטיבת ביניים</h3>
-            <p>הכנה מקצועית להמשך הלימודים.</p>
-        </div>
-
-        <div class="book-card">
-            <img src="/dSefer.jpeg">
-            <h3>ספרי קודש</h3>
-            <p>ספרים בפיקוח תורני מלא.</p>
-        </div>
-
-        <div class="book-card">
-            <img src="/dSefer.jpeg">
-            <h3>ספרי עזר</h3>
-            <p>חומרי העשרה ותרגול.</p>
         </div>
 
     </div>
 
 </section>
+<section class="how-it-works">
 
+    <div class="steps">
 
-<!-- FEATURES -->
-<section class="features">
+        <div class="step">
 
-    <div class="feature-box">
-        <h2>למה לבחור בנו?</h2>
+            <span>1</span>
 
-        <ul>
-            <li>✓ למעלה מ-20 שנות ניסיון</li>
-            <li>✓ צוות מחברים מוביל</li>
-            <li>✓ התאמה מלאה לתכניות הלימוד</li>
-            <li>✓ אישורי משרד החינוך</li>
-            <li>✓ ליווי והכוונה מקצועית</li>
-            <li>✓ הפצה לכל רחבי הארץ</li>
-        </ul>
+            <p>מעיינים בקטלוג</p>
+
+        </div>
+
+        <div class="step">
+
+            <span>2</span>
+
+            <p>מוסיפים להזמנה</p>
+
+        </div>
+
+        <div class="step">
+
+            <span>3</span>
+
+            <p>ממלאים פרטים</p>
+
+        </div>
+
+        <div class="step">
+
+            <span>4</span>
+
+            <p>שולחים הזמנה</p>
+
+        </div>
+
+        <div class="step">
+
+            <span>5</span>
+
+            <p>מקבלים אישור</p>
+
+        </div>
+
     </div>
 
-    <img src="/dSefer.jpeg">
+    <div class="title">
+
+        <h2>
+
+            איך זה<br>
+
+            עובד?
+
+        </h2>
+
+    </div>
 
 </section>
-
-
-<!-- CTA -->
-<section class="cta">
-
-    <h2>מחפשים ספרי לימוד איכותיים?</h2>
-
-    <p>
-        נשמח לסייע לכם לבחור את הספרים המתאימים ביותר.
-    </p>
-
-    <button class="btn-primary">
-        צרו קשר עכשיו
-    </button>
-
-</section>
-
-
-

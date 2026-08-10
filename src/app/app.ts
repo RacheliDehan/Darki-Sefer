@@ -11,11 +11,11 @@ export class App {
 
 
   
-  // חסימת מקש ימני
-  @HostListener('document:contextmenu', ['$event'])
-  onRightClick(event: MouseEvent): void {
-    event.preventDefault();
-  }
+  // // חסימת מקש ימני
+  // @HostListener('document:contextmenu', ['$event'])
+  // onRightClick(event: MouseEvent): void {
+  //   event.preventDefault();
+  // }
 
   // // חסימת קיצורי מקלדת
   // @HostListener('document:keydown', ['$event'])

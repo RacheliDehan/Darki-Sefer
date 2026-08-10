@@ -1,0 +1,459 @@
+.books-section {
+  position: relative;
+
+  width: 100%;
+  max-width: 1400px;
+
+  margin: 0 auto;
+
+  padding: 100px 70px 100px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  direction: ltr;
+
+  overflow: hidden;
+}
+
+
+/* =========================================
+   אזור הגלילה
+========================================= */
+
+.books-viewport {
+  width: 100%;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-behavior: smooth;
+
+  scrollbar-width: none;
+
+  padding: 10px 0 20px;
+}
+
+.books-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* =========================================
+   שורת הספרים
+========================================= */
+
+.books-wrapper {
+  display: flex;
+
+  align-items: flex-end;
+
+  gap: 30px;
+
+  width: max-content;
+
+  padding: 10px 5px;
+}
+
+
+/* =========================================
+   ספר
+========================================= */
+
+.book {
+  flex: 0 0 calc(
+    (100vw - 140px - 120px) / 5
+  );
+
+  max-width: 180px;
+  min-width: 130px;
+
+  display: block;
+
+  text-decoration: none;
+  perspective: 1000px;
+
+  transition:
+    transform 0.35s ease,
+    filter 0.35s ease;
+}
+
+
+/* =========================================
+   תמונת הספר
+========================================= */
+
+.book-image-wrapper {
+
+  position: relative;
+
+  width: 100%;
+  aspect-ratio: 0.68;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition:
+    transform 0.45s cubic-bezier(.2,.8,.2,1),
+    filter 0.45s ease;
+}
+
+
+.book img {
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+  border-radius: 2px;
+
+  box-shadow:
+    0 8px 15px rgba(0, 0, 0, 0.10),
+    0 18px 30px rgba(0, 0, 0, 0.07);
+
+  transition:
+    transform 0.45s cubic-bezier(.2,.8,.2,1),
+    box-shadow 0.45s ease,
+    filter 0.45s ease;
+}
+
+
+/* =========================================
+   אנימציית Hover
+========================================= */
+
+.book:hover {
+  transform: translateY(-8px);
+}
+
+
+.book:hover img {
+
+  transform:
+    translateY(-5px)
+    rotateY(-4deg)
+    scale(1.04);
+
+  box-shadow:
+    0 12px 20px rgba(0, 0, 0, 0.12),
+    0 25px 40px rgba(0, 0, 0, 0.12);
+
+  filter: brightness(1.03);
+}
+
+
+/* =========================================
+   אפקט קטן כשנכנסים לספר
+========================================= */
+
+.book:active {
+  transform: translateY(-3px) scale(0.98);
+}
+
+
+/* =========================================
+   החיצים
+========================================= */
+
+.slider-arrow {
+
+  position: absolute;
+
+  top: 42%;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(0, 0, 0, 0.15);
+
+  background: #f7c843;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  z-index: 5;
+
+  font-size: 24px;
+
+  color: #222;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+/* מיקום החיצים */
+
+.slider-arrow.left {
+  left: 20px;
+}
+
+.slider-arrow.right {
+  right: 20px;
+}
+
+
+/* החץ עצמו */
+
+.slider-arrow span {
+  display: block;
+
+  line-height: 1;
+
+  transition:
+    transform 0.25s ease;
+}
+
+
+/* Hover */
+
+.slider-arrow:hover {
+
+  background: #ffd85a;
+
+  transform: scale(1.1);
+
+  box-shadow:
+    0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+
+.slider-arrow.left:hover span {
+  transform: translateX(-3px);
+}
+
+.slider-arrow.right:hover span {
+  transform: translateX(3px);
+}
+
+
+/* לחיצה */
+
+.slider-arrow:active {
+  transform: scale(0.92);
+}
+
+
+/* =========================================
+   כפתור לכל הספרים
+========================================= */
+
+.all-books-btn {
+
+  position: relative;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  margin-top: 8px;
+
+  padding: 8px 18px;
+
+  min-width: 165px;
+
+  height: 48px;
+
+  border-radius: 30px;
+
+  background: #3d3d3d;
+
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 18px;
+
+  font-weight: 400;
+
+  overflow: hidden;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+/* אפקט אור */
+
+.all-books-btn::before {
+
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+  left: -100%;
+
+  width: 70%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.18),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+
+  transition: left 0.6s ease;
+}
+
+
+.all-books-btn:hover::before {
+  left: 130%;
+}
+
+
+.all-books-btn:hover {
+
+  background: #303030;
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,0.18);
+}
+
+
+/* החץ בתוך הכפתור */
+
+.btn-arrow {
+
+  width: 28px;
+  height: 28px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255,255,255,0.7);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 17px;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+
+.all-books-btn:hover .btn-arrow {
+
+  transform: translateX(-4px);
+
+  background: rgba(255,255,255,0.1);
+}
+
+
+/* =========================================
+   Responsive
+========================================= */
+
+
+/* טאבלט */
+
+@media (max-width: 1000px) {
+
+  .books-section {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
+  .book {
+    flex-basis: calc(
+      (100vw - 120px - 90px) / 4
+    );
+  }
+
+}
+
+
+/* מובייל */
+
+@media (max-width: 700px) {
+
+  .books-section {
+
+    padding:
+      20px 45px 15px;
+  }
+
+
+  .books-wrapper {
+    gap: 20px;
+  }
+
+
+  .book {
+
+    flex-basis: calc(
+      (100vw - 90px - 20px) / 2
+    );
+
+    max-width: 170px;
+  }
+
+
+  .slider-arrow {
+
+    width: 36px;
+    height: 36px;
+
+    font-size: 20px;
+  }
+
+
+  .slider-arrow.left {
+    left: 7px;
+  }
+
+
+  .slider-arrow.right {
+    right: 7px;
+  }
+
+
+  .all-books-btn {
+
+    min-width: 150px;
+
+    height: 44px;
+
+    font-size: 16px;
+  }
+
+}
+
+
+/* מובייל קטן */
+
+@media (max-width: 400px) {
+
+  .book {
+
+    flex-basis: 130px;
+  }
+
+}

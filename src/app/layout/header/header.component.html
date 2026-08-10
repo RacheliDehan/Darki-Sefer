@@ -1,8 +1,6 @@
-<header class="header">
+<!-- <header class="header">
 
-  <!-- <div class="container"> -->
 
-    <!-- Logo -->
     <a class="logo-wrapper" [routerLink]="routes.HOME">
 
       <img
@@ -16,8 +14,6 @@
       </div>
 
     </a>
-
-    <!-- Desktop Navigation -->
     <nav class="main-menu">
 
       <a
@@ -26,54 +22,59 @@
         [routerLinkActiveOptions]="{ exact: true }">
         דף הבית
       </a>
-
       <a
         [routerLink]="routes.CATALOG"
         routerLinkActive="active">
         קטלוג
       </a>
-
-      <!-- <a
-        [routerLink]="routes.ORDER_REQUEST"
-        routerLinkActive="active">
-        הזמנת ספרים
-      </a> -->
-
       <a
         [routerLink]="routes.CART"
         routerLinkActive="active">
         עגלת קניות
       </a>
-<!-- 
-      <a
-        [routerLink]="routes.CHECKOUT"
-        routerLinkActive="active">
-        תשלום
-      </a> -->
-
-      <!-- <a
-        [routerLink]="routes.CONTACT"
-        routerLinkActive="active">
-        צור קשר
-      </a> -->
-
     </nav>
 
-    <!-- Actions -->
     <div class="header-left">
-
       <a 
         [routerLink]="routes.CART"
         class="cart-btn">
         🛒 סל
       </a>
-
-      <!-- <button class="login-btn">
-        התחברות
-      </button> -->
-
     </div>
+</header> -->
 
-  <!-- </div> -->
+
+<header class="header">
+
+
+  <nav class="main-menu">
+    <a
+      [routerLink]="routes.HOME"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }">
+      דף הבית
+    </a>
+    <a
+      [routerLink]="routes.CATALOG"
+      routerLinkActive="active">
+      קטלוג
+    </a>
+    <a routerLink="/about">
+      אודות
+    </a>
+    <a     [routerLink]="routes.CART"
+      routerLinkActive="active">
+     עגלה
+    </a>
+  </nav>
+
+
+
+  <a class="logo-wrapper" [routerLink]="routes.HOME">
+    <img
+      src="logo.png"
+      alt="דרכי הספר"
+      class="logo">
+  </a>
 
 </header>

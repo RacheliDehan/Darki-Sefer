@@ -1,0 +1,148 @@
+ <section class="books-section">
+
+  <!-- חץ שמאלה -->
+  <button
+    class="slider-arrow left"
+    type="button"
+    (click)="scrollBooks('left')"
+    aria-label="ספרים קודמים">
+    <span>←</span>
+  </button>
+
+
+  <!-- אזור הספרים -->
+  <div class="books-viewport" #booksViewport>
+
+    <div class="books-wrapper">
+
+      <!-- ספר 1 -->
+      <a
+        class="book"
+        routerLink="/books/1">
+
+        <div class="book-image-wrapper">
+          <img
+            src="./oneBook.png"
+            alt="ספר 1"
+          >
+        </div>
+
+      </a>
+
+
+      <!-- ספר 2 -->
+      <a
+        class="book"
+        routerLink="/books/2">
+
+        <div class="book-image-wrapper">
+          <img
+            src="./oneBook.png"
+            alt="ספר 2"
+          >
+        </div>
+
+      </a>
+
+
+      <!-- ספר 3 -->
+      <a
+        class="book"
+        routerLink="/books/3">
+
+        <div class="book-image-wrapper">
+          <img
+            src="./oneBook.png"
+            alt="ספר 3"
+          >
+        </div>
+
+      </a>
+
+
+      <!-- ספר 4 -->
+      <a
+        class="book"
+        routerLink="/books/4">
+
+        <div class="book-image-wrapper">
+          <img
+            src="./oneBook.png"
+            alt="ספר 4"
+          >
+        </div>
+
+      </a>
+
+
+      <!-- ספר 5 -->
+      <a
+        class="book"
+        routerLink="/books/5">
+
+        <div class="book-image-wrapper">
+          <img
+            src="./oneBook.png"
+            alt="ספר 5"
+          >
+        </div>
+
+      </a>
+
+
+      <!-- ספר 6 -->
+      <a
+        class="book"
+        routerLink="/books/6">
+
+        <div class="book-image-wrapper">
+          <img
+            src="./oneBook.png"
+            alt="ספר 6"
+          >
+        </div>
+
+      </a>
+
+
+      <!-- ספר 7 -->
+      <a
+        class="book"
+        routerLink="/books/7">
+
+        <div class="book-image-wrapper">
+          <img
+            src="./oneBook.png"
+            alt="ספר 7"
+          >
+        </div>
+
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <!-- חץ ימינה -->
+  <button
+    class="slider-arrow right"
+    type="button"
+    (click)="scrollBooks('right')"
+    aria-label="ספרים הבאים">
+    <span>→</span>
+  </button>
+
+
+  <!-- כפתור לכל הספרים -->
+  <a
+    class="all-books-btn"
+    routerLink="/books">
+
+    <span class="btn-arrow">←</span>
+
+    <span>לכל הספרים</span>
+
+  </a>
+
+</section> 
