@@ -1,14 +1,19 @@
-<!-- סל עם פרטי הצעת מחיר -->
 <section class="checkout-page">
 
   <h1>סל קניות והזמנה</h1>
 
-  <!-- עגלה -->
-  <div class="cart-box">
+  <div class="cart-box" dir="rtl">
 
-    <h2>פריטים בעגלה</h2>
+    <h2>הזמנת ספרים</h2>
+
+    <app-book-order></app-book-order>
+
+    <hr>
+
+    <h2>העגלה שלי</h2>
 
     <ul>
+
       <li *ngFor="let item of store.items()">
 
         <div class="title">
@@ -24,22 +29,24 @@
         </div>
 
       </li>
+
     </ul>
 
     <div class="summary">
 
       <div>
-        סה"כ ספרים: {{ store.totalBooks() }}
+        סה"כ ספרים:
+        {{ store.totalBooks() }}
       </div>
 
       <div>
-        סה"כ לתשלום: {{ store.totalAmount() }}
+        סה"כ לתשלום:
+        {{ store.totalAmount() }} ₪
       </div>
 
     </div>
 
   </div>
-
   <!-- טופס -->
   <form [formGroup]="form" (ngSubmit)="submit()" class="form">
 

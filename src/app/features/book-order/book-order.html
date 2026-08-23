@@ -1,0 +1,73 @@
+<div class="book-order" dir="rtl">
+
+  <h2>הזמנת ספרי טבע</h2>
+
+  <div class="price-info">
+    מחיר לספר: <strong>{{ bookPrice }} ₪</strong>
+  </div>
+
+  <div class="books-list">
+
+    <div
+      class="book-row"
+      *ngFor="let book of books"
+      [class.disabled]="!book.available"
+    >
+
+      <div class="book-info">
+
+        <div class="book-title">
+          {{ book.title }}
+        </div>
+
+        <div
+          class="not-available"
+          *ngIf="!book.available"
+        >
+          כרגע לא זמין לרכישה
+        </div>
+
+      </div>
+
+      <div class="quantity">
+
+        <label>
+          כמות
+        </label>
+
+        <input
+          type="number"
+          min="0"
+          [(ngModel)]="book.quantity"
+          [disabled]="!book.available"
+          (ngModelChange)="onQuantityChange(book)"
+        />
+
+      </div>
+
+      <div
+        class="row-total"
+        *ngIf="book.available"
+      >
+        {{ book.quantity * book.price }} ₪
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="summary">
+
+    <div class="summary-row">
+      <span>סה"כ ספרים:</span>
+      <strong>{{ totalBooks }}</strong>
+    </div>
+
+    <div class="summary-row total">
+      <span>סה"כ לתשלום:</span>
+      <strong>{{ totalAmount }} ₪</strong>
+    </div>
+
+  </div>
+
+</div>

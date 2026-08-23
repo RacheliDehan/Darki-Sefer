@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { CatalogStore } from '../catalog/store/catalog.store';
 import { ROUTES } from '../../core/constants/routes.constants';
 import { RouterModule } from '@angular/router';
-import { BooksSliderComponent } from '../books-slider/books-slider.component';
+import { CartComponent } from '../cart/cart.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, BooksSliderComponent],
+  imports: [CommonModule, RouterModule, CartComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss', './home2.component.scss']
 })
