@@ -51,7 +51,7 @@ export class CartService {
     this._items.update(list => {
       const copy = list.slice();
       const existing = { ...copy[idx] };
-      const newQty = existing.quantity + quantity;
+      const newQty = existing.quantity = quantity;
       if (!this.inventoryService.canOrder(book, newQty)) {
         throw new Error('Insufficient stock for requested quantity');
       }
