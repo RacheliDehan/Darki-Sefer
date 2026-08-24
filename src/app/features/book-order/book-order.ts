@@ -38,7 +38,7 @@ get totalAmount(): number {
 
   books: BookOption[] = [
     {
-      id: 'nature-a',
+      id: '1',
       title: 'ספר טבע לכיתה א',
       grade: 'א',
       price: 17,
@@ -46,7 +46,7 @@ get totalAmount(): number {
       quantity: 0
     },
     {
-      id: 'nature-b',
+      id: '2',
       title: 'ספר טבע לכיתה ב',
       grade: 'ב',
       price: 17,
@@ -54,7 +54,7 @@ get totalAmount(): number {
       quantity: 0
     },
     {
-      id: 'nature-c',
+      id: '3',
       title: 'ספר טבע לכיתה ג',
       grade: 'ג',
       price: 17,
@@ -62,7 +62,7 @@ get totalAmount(): number {
       quantity: 0
     },
     {
-      id: 'nature-d',
+      id: '4',
       title: 'ספר טבע לכיתה ד',
       grade: 'ד',
       price: 17,
@@ -70,7 +70,7 @@ get totalAmount(): number {
       quantity: 0
     },
     {
-      id: 'nature-e',
+      id: '5',
       title: 'ספר טבע לכיתה ה',
       grade: 'ה',
       price: 17,
@@ -78,7 +78,7 @@ get totalAmount(): number {
       quantity: 0
     },
     {
-      id: 'nature-f',
+      id: '6',
       title: 'ספר טבע לכיתה ו',
       grade: 'ו',
       price: 17,
@@ -86,7 +86,7 @@ get totalAmount(): number {
       quantity: 0
     },
     {
-      id: 'nature-g',
+      id: '7',
       title: 'ספר טבע לכיתה ז',
       grade: 'ז',
       price: 17,
@@ -94,7 +94,7 @@ get totalAmount(): number {
       quantity: 0
     },
     {
-      id: 'nature-h',
+      id: '8',
       title: 'ספר טבע לכיתה ח',
       grade: 'ח',
       price: 17,
