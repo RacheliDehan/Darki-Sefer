@@ -34,14 +34,14 @@ get totalBooks(): number {
 get totalAmount(): number {
   return this.store.totalAmount();
 }
-  readonly bookPrice = 17;
+  readonly bookPrice = 18;
 
   books: BookOption[] = [
     {
       id: '1',
       title: 'ספר טבע לכיתה א',
       grade: 'א',
-      price: 17,
+      price: this.bookPrice,
       available: false,
       quantity: 0
     },
@@ -49,7 +49,7 @@ get totalAmount(): number {
       id: '2',
       title: 'ספר טבע לכיתה ב',
       grade: 'ב',
-      price: 17,
+      price: this.bookPrice,
       available: true,
       quantity: 0
     },
@@ -57,7 +57,7 @@ get totalAmount(): number {
       id: '3',
       title: 'ספר טבע לכיתה ג',
       grade: 'ג',
-      price: 17,
+      price: this.bookPrice,
       available: true,
       quantity: 0
     },
@@ -65,7 +65,7 @@ get totalAmount(): number {
       id: '4',
       title: 'ספר טבע לכיתה ד',
       grade: 'ד',
-      price: 17,
+      price: this.bookPrice,
       available: true,
       quantity: 0
     },
@@ -73,7 +73,7 @@ get totalAmount(): number {
       id: '5',
       title: 'ספר טבע לכיתה ה',
       grade: 'ה',
-      price: 17,
+      price: this.bookPrice,
       available: true,
       quantity: 0
     },
@@ -81,7 +81,7 @@ get totalAmount(): number {
       id: '6',
       title: 'ספר טבע לכיתה ו',
       grade: 'ו',
-      price: 17,
+      price: this.bookPrice,
       available: true,
       quantity: 0
     },
@@ -89,7 +89,7 @@ get totalAmount(): number {
       id: '7',
       title: 'ספר טבע לכיתה ז',
       grade: 'ז',
-      price: 17,
+      price: this.bookPrice,
       available: true,
       quantity: 0
     },
@@ -97,7 +97,7 @@ get totalAmount(): number {
       id: '8',
       title: 'ספר טבע לכיתה ח',
       grade: 'ח',
-      price: 17,
+      price: this.bookPrice,
       available: false,
       quantity: 0
     }
