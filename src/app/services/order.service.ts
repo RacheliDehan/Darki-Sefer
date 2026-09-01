@@ -193,22 +193,23 @@ export class OrderService {
   }
 
   async sendQuoteRequest(dto: OrderQuoteRequestDto): Promise<void> {
-debugger
+    debugger
     const templateParams = {
 
-      customer_name: dto.customerName,
-
-      institution_name: dto.institutionName,
-
-      book_name: dto.bookName,
+      customerName: dto.customerName,
+      institutionName: dto.institutionName,
+      phone: dto.phone,
+      email: dto.email,
+      address: " ", //TODO,  ? 'משלוח' : 'איסוף עצמי',
+      city: " ", //TODO dto.city,          
+      invoiceName: " ", //TODO dto.city,          
+      phone2: " ", //TODO dto.city,          
+      bookName: dto.bookName,
 
       quantity: dto.quantity,
-
-      delivery: dto.delivery ? 'כן' : 'לא',
-
-      phone: dto.phone,
-
-      email: dto.email,
+      totalAmount: " ", //TODO, 
+finalAmount:"", //TODO,dto.totalAmount+100, 
+      notes: "" ,//TODO 
 
       to_email: environment.emailJs.adminEmail
 

@@ -1,10 +1,11 @@
 export const environment = {
   production: false,
   emailJs: {
-    serviceId: 'service_izavnfz',
+    serviceId: 'service_6nv0poe',
     publicKey: 'Kd30sw-n7sbklI6kH',
-    adminTemplateId: 'template_55wq21e',
-    customerTemplateId: 'template_55wq21e',
-    adminEmail: 'oddice@d-sefer.co.il'
+    adminTemplateId: 'template_ahzarjd',
+    customerTemplateId: 'template_ahzarjd',
+    adminEmail: 'r8175r@gmail.com'
   }
 };
+
