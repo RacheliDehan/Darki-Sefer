@@ -66,8 +66,8 @@ export class CartComponent {
 
     city: [''],
 
-    address: [''],
-
+    address: ['', [Validators.required]],
+    principalName: [''],
     invoiceName: ['', [Validators.required]],
 
     notes: [''],
@@ -111,7 +111,9 @@ export class CartComponent {
 
       const items = this.store.items();
 
-
+      const booksDetails = items
+        .map(item => `${item.book?.title} — ${item.quantity} יח׳`)
+        .join('\n');
       await this.orderService.sendQuoteRequest({
 
         customerId: crypto.randomUUID(),
@@ -125,10 +127,11 @@ export class CartComponent {
         bookIds:
           items.map(item => item.bookId),
 
-        bookName:
-          items
-            .map(item => item.book?.title)
-            .join(', '),
+        // bookName:
+        //   items
+        //     .map(item => item.book?.title)
+        //     .join(', '),
+        bookName: booksDetails,
 
         quantities:
           items.map(item => item.quantity),

@@ -40,13 +40,23 @@
       </div>
 
       <div>
-        סה"כ לתשלום:
+        סה"כ הזמנה:
         {{ store.totalAmount() }} ₪
       </div>
 
     </div>
-
+    <br>
+    <div class="summary">
+      <div>
+        עלות משלוח 100 ש"ח
+      </div>
+      <div>
+        סה"כ לתשלום:
+        {{ store.totalAmount() + 100 }} ₪
+      </div>
+    </div>
   </div>
+
   <!-- טופס -->
   <form [formGroup]="form" (ngSubmit)="submit()" class="form">
 
@@ -100,17 +110,24 @@
       </div>
 
       <div class="field">
-        <label>עיר</label>
+        <label>כתובת העמותה</label>
         <input formControlName="city" />
       </div>
 
       <div class="field">
-        <label>כתובת מלאה</label>
+        <label>כתובת למשלוח *</label>
         <input formControlName="address" />
+        <small *ngIf="form.get('address')?.touched && form.get('address')?.invalid">
+          חובה להזין כתובת למשלוח
+        </small>
+      </div>
+      <div class="field">
+        <label>שם מנהל בית הספר</label>
+        <input formControlName="principalName" />
       </div>
 
       <div class="field">
-        <label>חשבונית על שם</label>
+        <label>חשבונית על שם *</label>
         <input formControlName="invoiceName" />
         <small *ngIf="form.get('invoiceName')?.touched && form.get('invoiceName')?.invalid">
           חובה להזין שם לחשבונית
@@ -122,7 +139,7 @@
         <textarea formControlName="notes"></textarea>
       </div>
 
-      <div class="field full">
+      <!-- <div class="field full">
         <label>משלוח *</label>
 
         <div class="radio">
@@ -135,8 +152,8 @@
             <input type="radio" [value]="false" formControlName="delivery" />
             לא
           </label>
-        </div>
-      </div>
+        </div> 
+      </div>-->
 
     </div>
 
@@ -145,4 +162,23 @@
     </button>
   </form>
 
+</section>
+
+<section class="checkout-page">
+  <div class="cart-box" dir="rtl">
+<strong>שימו לב!</strong>
+<br><br>
+הספרים יישלחו <strong>לאחר העברת התשלום</strong> בהעברה בנקאית.
+<br><br>
+<strong>פרטי חשבון להעברה:</strong>
+<br>
+בנק: <strong>52</strong> |
+סניף: <strong>180</strong> |
+חשבון: <strong>957270</strong>
+<br>
+ע"ש <strong>דרכי הספר הוצאה לאור בע"מ</strong>
+<br><br>
+<strong>חשוב:</strong>
+בהערות להעברה יש לציין את <strong>שם המוסד המשלם</strong>.
+  </div>
 </section>
