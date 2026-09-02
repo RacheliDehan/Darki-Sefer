@@ -154,7 +154,8 @@ export class CartComponent {
           new Date().toISOString(),
 
         notes:
-          formValue.notes ?? ''
+          formValue.notes ?? '',
+          city: formValue.city ?? '',
 
       });
 
@@ -180,6 +181,10 @@ export class CartComponent {
         err instanceof Error
           ? err.message
           : 'אירעה שגיאה'
+      );
+         alert(
+        'ניתן ליצור קשר בטלפון 08-6791900 או במייל office@sefer.org.il אם אירעה שגיאה בשליחת ההזמנה. אנא נסה שוב מאוחר יותר.'
+
       );
 
     } finally {

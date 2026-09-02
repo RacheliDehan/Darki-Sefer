@@ -96,6 +96,9 @@ export class OrderRequestComponent {
 
         notes: [
             ''
+        ],
+        city: [
+            ''
         ]
 
     });
@@ -141,7 +144,8 @@ export class OrderRequestComponent {
         quantity: formValue.quantity,
         delivery: formValue.delivery,
         phone: formValue.phone,
-        email: formValue.email
+        email: formValue.email,
+        city: formValue.city
     });
             this.successMessage.set(
                 'הבקשה נשלחה בהצלחה! נחזור אליך בהקדם.'

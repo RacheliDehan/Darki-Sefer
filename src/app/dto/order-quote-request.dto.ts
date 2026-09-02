@@ -19,6 +19,8 @@ export interface OrderQuoteRequestDto {
   phone: string;
 
   email: string;
+  city: string;
+ 
 }
 
 

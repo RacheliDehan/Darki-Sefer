@@ -139,6 +139,7 @@ export class OrderService {
       total_amount: order.totalAmount.toFixed(2),
       currency: order.currency,
       delivery_type: 'משלוח',
+      city: order.shippingAddress?.city || '',
       notes: order.notes || 'אין הערות'
     };
   }
@@ -193,7 +194,7 @@ export class OrderService {
   }
 
   async sendQuoteRequest(dto: OrderQuoteRequestDto): Promise<void> {
-    debugger
+    
     const templateParams = {
 
       customerName: dto.customerName,
@@ -201,16 +202,14 @@ export class OrderService {
       phone: dto.phone,
       email: dto.email,
       address: " ", //TODO,  ? 'משלוח' : 'איסוף עצמי',
-      city: " ", //TODO dto.city,          
+      city: dto.city, //TODO dto.city,          
       invoiceName: " ", //TODO dto.city,          
       phone2: " ", //TODO dto.city,          
       bookName: dto.bookName,
-
       quantity: dto.quantity,
-      totalAmount: " ", //TODO, 
-finalAmount:"", //TODO,dto.totalAmount+100, 
-      notes: "" ,//TODO 
-
+      totalAmount: dto.quantity*18, 
+      finalAmount: dto.quantity*18+100, 
+      notes: dto.notes,//TODO 
       to_email: environment.emailJs.adminEmail
 
     };
